@@ -40,7 +40,7 @@ class EpisodesController < ApplicationController
   private
 
   def episode_params
-    params.require(:episode).permit(:title, :description)
+    params.require(:episode).permit(:title, :description, :episode_thumbnail)
   end
 
   def find_podcast
@@ -55,6 +55,7 @@ class EpisodesController < ApplicationController
     @podcast = Podcast.find(params[:podcast_id])
     if current_podcast != @podcast
       redirect_to root_path, notice: "Sorry, you're not allowed to view that page"
+    end
   end
 
 end
